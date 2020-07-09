@@ -1,0 +1,28 @@
+{
+  "builders": [
+    {
+      "commit": "true",
+      "image": "ubuntu:18.04",
+      "type": "docker"
+    }
+  ],
+  "post-processors": [
+    [
+      {
+        "repository": "zelaskov/packer-example",
+        "tags": ["0.11"],
+        "type": "docker-tag"
+      }
+    ]
+  ],
+  "provisioners": [
+    {
+      "script": "terraform.sh",
+      "type": "shell"
+    },
+    {
+      "script": "awscli.sh",
+      "type": "shell"
+    }
+  ]
+}
